@@ -10,6 +10,8 @@ export const PaymentStatusModal: React.FC<PaymentStatusModalProps> = ({ showModa
     const [isSuccess, setIsSuccess] = useState(true);
     if (!showModalPaymentStatus) return null;
 
+    console.log("status:", setShowModalPaymentStatus);
+    console.log("log:", setIsSuccess);
     return (
         <>
             <style>

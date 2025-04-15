@@ -31,6 +31,9 @@ const Star = ({ filled }: { filled: boolean }) => (
   </span>
 );
 
+console.log("name:", generateFakeName);
+console.log("rating:", generateRandomRating);
+
 export const Reviews: React.FC<ReviewsProps> = ({ reviews, productName }) => {
   if (reviews.length === 0) {
     return <p className="text-gray-500 italic">No reviews available for {productName} yet.</p>;

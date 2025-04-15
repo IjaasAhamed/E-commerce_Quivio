@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation, useSearchParams } from "react-router-dom";
-import axios, { AxiosError } from "axios";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import axios from "axios";
 import toast from "react-hot-toast";
 import LoginImg from "../assets/login-img.png";
 import { Navbar } from "./Navbar";
@@ -9,7 +9,6 @@ import { Footer } from "./Footer";
 export const LoginSignup = () => {
   const API = import.meta.env.VITE_API_BASE_URL;
   const navigate = useNavigate();
-  const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [formData, setFormData] = useState({
@@ -46,6 +45,8 @@ export const LoginSignup = () => {
     }
   }, [searchParams]);
 
+  console.log("log:", setSearchParams);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
     setFormData((prev) => ({ ...prev, [id]: value }));
@@ -67,9 +68,9 @@ export const LoginSignup = () => {
     return nameRegex.test(value);
   };
 
-  const isPasswordValid = (value: string): boolean => {
-    return value.length >= 6;
-  };
+  // const isPasswordValid = (value: string): boolean => {
+  //   return value.length >= 6;
+  // };
 
   const validateForm = () => {
     let valid = true;
@@ -130,7 +131,7 @@ export const LoginSignup = () => {
 
     setLoading(true);
     try {
-        let endpoint = isSignup ? "${API}/signup-register" : "${API}/login-user";
+        let endpoint = isSignup ? `${API}/signup-register` : `${API}/login-user`;
         let payload = isSignup
             ? {
                 mobileNumber: formData.signupMobileNumber,

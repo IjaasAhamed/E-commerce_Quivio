@@ -40,6 +40,8 @@ export const ScrollToTop = () => {
     const circleCircumference = 2 * Math.PI * circleRadius;
     const progressOffset = circleCircumference - (scrollPercent / 100) * circleCircumference;
 
+    console.log("log:", isAnimatingOut);
+
     return (
         <div
             style={{

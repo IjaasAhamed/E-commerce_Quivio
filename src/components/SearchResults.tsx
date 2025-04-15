@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { SideBar } from "./SideBar";
@@ -224,7 +224,7 @@ display: block;
                       <ul className="list-disc pl-5">
                         {Object.entries(product.product_specifications).map(([key, value], index) => (
                           <li key={index}>
-                            <span className="font-semibold">{key}:</span> {value}
+                            <span className="font-semibold">{key}:</span> {value as string}
                           </li>
                         ))}
                       </ul>

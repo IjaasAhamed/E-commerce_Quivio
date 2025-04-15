@@ -47,7 +47,6 @@ export const Checkout = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [showModalPaymentStatus, setShowModalPaymentStatus] = useState<boolean>(false);
   const [loading, setLoading] = useState(true);
-  const [placingOrder, setPlacingOrder] = useState<boolean>(false);
   const [orderProcessed, setOrderProcessed] = useState<boolean>(false);
 
 
@@ -115,6 +114,13 @@ export const Checkout = () => {
 
   const handlePlaceOrder = async () => {
     console.log("Cart contents:", cart);
+    console.log("setCart:", setCart);
+    console.log("orderProcessed:", orderProcessed);
+    console.log("street:", street);
+    console.log("city:", city);
+    console.log("state:", state);
+    console.log("zip:", zip);
+    console.log("country:", country);
 
     let itemsToOrder = [...cart];
 

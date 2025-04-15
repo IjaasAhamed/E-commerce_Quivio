@@ -5,7 +5,6 @@ import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import '../styles/Buttons.css'
 import truck from '../assets/truck.png';
-import headphoneSupport from '../assets/headphoneSupport.png';
 import undo from "../assets/undo.png";
 import CartIcon from '../assets/cart icon.png'
 import BuyNow from '../assets/lightning.png'

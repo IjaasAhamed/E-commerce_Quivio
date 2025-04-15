@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import Logo from '../assets/Quivio Logo.png'
 import fb from '../assets/facebook.png'
 import insta from '../assets/instagram.png'

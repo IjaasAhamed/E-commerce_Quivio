@@ -75,11 +75,6 @@ export const CartPage = () => {
     updateCart(updatedCart);
   };
 
-  // Clear entire cart
-  const clearCart = () => {
-    setCart([]);
-    localStorage.removeItem("cart");
-  };
   // Calculate total price of all items in cart BEFORE discount
   const calculateOriginalTotalPrice = () => {
     return cart.reduce((total, item) => {

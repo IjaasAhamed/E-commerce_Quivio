@@ -17,7 +17,6 @@ export const HeartButton: React.FC<HeartButtonProps> = ({
   onRemoveFromWishlist,
 }) => {
   const [liked, setLiked] = useState(false); // Initialize liked to false
-  const [isLoading, setIsLoading] = useState(true);
 
   const API = import.meta.env.VITE_API_BASE_URL;
   useEffect(() => {

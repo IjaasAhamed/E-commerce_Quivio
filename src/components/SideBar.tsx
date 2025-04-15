@@ -176,6 +176,9 @@ export const SideBar = ({ onBrandFilterChange, onRatingFilterChange, onPriceFilt
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  console.log("log:", loading);
+  console.log("err:", error);
+  
   return (
     <>
       <style>

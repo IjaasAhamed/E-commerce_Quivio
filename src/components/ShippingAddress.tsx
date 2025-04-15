@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import addressImg from '../assets/selected-address.png';
 import address from "../assets/address.png";
@@ -18,7 +17,6 @@ interface Address {
 
 export const ShippingAddress = () => {
   const API = import.meta.env.VITE_API_BASE_URL;
-  const navigate = useNavigate();
   const [street, setStreet] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');

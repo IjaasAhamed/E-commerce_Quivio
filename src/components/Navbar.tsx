@@ -123,6 +123,9 @@ export const Navbar = () => {
     window.location.href = ("/");
   };
 
+  console.log("log:", loading);
+  console.log("err:", error);
+
   return (
     <header>
       <style>

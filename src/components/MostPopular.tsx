@@ -43,6 +43,8 @@ export const MostPopular = () => {
       });
   };
 
+  console.log("Popular Products:", popularProducts);
+
   const fetchWishlist = async () => {
     if (userId) {
         try {
