@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { HomePage } from "./pages/HomePage";
-import CategoryPage from "./pages/ProductCategoriesPage";
 import { Search } from './components/Search';
 import { ProductCategory } from './components/ProductCategory';
 import { ProductDetails } from './components/ProductDetails';
