@@ -23,6 +23,12 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+// Health Check Path for Render
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
+
+
 // Fetch popular products based on category
 app.get("/popular-products", (req, res) => {
   const category = req.query.category;
