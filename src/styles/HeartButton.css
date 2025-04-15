@@ -1,0 +1,25 @@
+.heart-icon {
+    position: relative;
+    top: 0;
+    right: -225px;
+    width: 33px;
+    height: 33px;
+    cursor: pointer;
+    fill: rgb(195, 195, 195);
+    /* background-color: rgba(224, 224, 224, 0.655);
+    border-radius: 50%; */
+    padding: 8px;
+    transition: transform 0.3s ease, fill 0.3s ease;
+  }
+  
+  /* On hover, slightly enlarge the heart */
+  .heart-icon:hover {
+    transform: scale(1.2);
+  }
+  
+  /* Jump effect and fill red when liked */
+  .heart-icon.liked {
+    transform: scale(1.1); /* Jump effect */
+    fill: red; /* Red fill when liked */
+  }
+  

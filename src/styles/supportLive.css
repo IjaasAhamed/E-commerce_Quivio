@@ -1,0 +1,52 @@
+@keyframes halfBounce1 {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.5);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes halfBounce2 {
+    0% {
+      transform: scale(1.5);
+    }
+    50% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.5);
+    }
+  }
+  .circle1 {
+    display: block;
+    position: absolute;
+    left: 10%;
+    top: -30px;
+    content: '';
+    background: #0059ff;
+    opacity: 0.07;
+    width: 87px;
+    height: 87px;
+    border-radius: 50%;
+    animation: halfBounce1 4s infinite;
+    animation-delay: 1s;
+  }
+
+  .circle2 {
+    display: block;
+    position: absolute;
+    left: 75%; 
+    top: 200px;
+    content: '';
+    background: #0059ff;
+    opacity: 0.07;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    animation: halfBounce2 4s infinite;
+    animation-delay: 1s;
+  }
+  

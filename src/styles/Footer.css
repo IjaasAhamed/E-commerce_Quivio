@@ -1,0 +1,5 @@
+.r8:hover {
+    transform: translateX(8px) !important;
+    transition: all 0.3s ease-in-out;
+    color: #155dfc;
+  }

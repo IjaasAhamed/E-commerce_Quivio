@@ -1,0 +1,43 @@
+  
+  .input-field-cardForm {
+    position: relative;
+    margin: 15px 0px;
+  }
+  
+  .input-field-cardForm label {
+    position: absolute;
+    color: #8d8d8d;
+    pointer-events: none;
+    background-color: transparent;
+    left: 15px;
+    transform: translateY(0.6rem);
+    transition: all 0.3s ease;
+  }
+  
+  .input-field-cardForm input {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: solid 1px #8d8d8d;
+    letter-spacing: 1px;
+    width: 100%;
+  }
+  
+  .input-field-cardForm input:focus,
+  .input-field-cardForm input:valid {
+    outline: none;
+    border: solid 1px #0092fb;
+  }
+  
+  .input-field-cardForm input:focus ~ label,
+  .input-field-cardForm input:valid ~ label {
+    transform: translateY(-50%) translateX(-20%) scale(0.7);
+    background-color: #fff;
+    padding: 0px 5px;
+    color: #0092fb;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 100px;
+  }
+  

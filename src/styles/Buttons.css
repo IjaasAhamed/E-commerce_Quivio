@@ -1,0 +1,405 @@
+/* Button1 */
+.cenhov {
+  cursor: pointer;
+  position: relative;
+  padding: 10px 24px;
+  font-size: 18px;
+  color: #ffffff;
+  background-color: #1447e6;
+  border-radius: none;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  overflow: hidden;
+}
+
+.cenhov:hover {
+  color: #ffffff;
+  scale: 1;
+  box-shadow: 0px 7px 40px 0px rgba(49, 96, 216, 0.2);
+}
+
+.cenhov::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 50px;
+  height: 50px;
+  border-radius: inherit;
+  scale: 0;
+  z-index: -1;
+  background-color: #000000;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.cenhov:hover::before {
+  scale: 3;
+}
+
+/* Button 2 */
+.cenhov1 {
+  cursor: pointer;
+  position: relative;
+  padding: 6px 16px;
+  font-size: 18px;
+  color: #000000;
+  background-color: #ffffff;
+  border-radius: none;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  overflow: hidden;
+}
+
+.cenhov1:hover {
+  color: #ffffff;
+  scale: 1;
+  box-shadow: 0px 7px 40px 0px rgba(49, 96, 216, 0.2);
+}
+
+.cenhov1::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 50px;
+  height: 50px;
+  border-radius: inherit;
+  scale: 0;
+  z-index: -1;
+  background-color: #000000;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.cenhov1:hover::before {
+  scale: 3;
+}
+
+/* Button 3 */
+.cenhov2 {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 33px;
+  font-size: 18px;
+  color: #ffffff;
+  background-color: #000000;
+  border-radius: none;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  overflow: hidden;
+}
+
+.cenhov2:hover {
+  color: #ffffff;
+  scale: 1;
+  box-shadow: 0px 7px 40px 0px rgba(49, 96, 216, 0.2);
+}
+
+.cenhov2::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 50px;
+  height: 50px;
+  border-radius: inherit;
+  scale: 0;
+  z-index: -1;
+  background-color: #1447e6;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.cenhov2:hover::before {
+  scale: 3;
+}
+
+/* Button 4 */
+.cenhov3 {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  cursor: pointer;
+  position: relative;
+  padding: 15px 40px;
+  font-size: 18px;
+  color: #ffffff;
+  text-transform: uppercase;
+  background-color: #0092fb;
+  border-radius: none;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  overflow: hidden;
+}
+
+.cenhov3:hover {
+  color: #ffffff;
+  scale: 1;
+  box-shadow: 0px 7px 40px 0px rgba(49, 96, 216, 0.2);
+}
+
+.cenhov3::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 50px;
+  height: 50px;
+  border-radius: inherit;
+  scale: 0;
+  z-index: -1;
+  background-color: #000000;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.cenhov3:hover::before {
+  scale: 5;
+}
+
+/* Button 5 */
+.cenhov4 {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  cursor: pointer;
+  position: relative;
+  padding: 15px 55px;
+  font-size: 18px;
+  color: #ffffff;
+  text-transform: uppercase;
+  background-color: #fb9200;
+  border-radius: none;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  overflow: hidden;
+}
+
+.cenhov4:hover {
+  color: #ffffff;
+  scale: 1;
+  box-shadow: 0px 7px 40px 0px rgba(49, 96, 216, 0.2);
+}
+
+.cenhov4::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 50px;
+  height: 50px;
+  border-radius: inherit;
+  scale: 0;
+  z-index: -1;
+  background-color: #000000;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.cenhov4:hover::before {
+  scale: 5;
+}
+
+
+/* Button 6 */
+.plcorder {
+  background-color: #fb6d00;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 10px 40px;
+  margin: 30px auto;
+  cursor: pointer;
+  border-radius: 2%;
+  display: block;
+}
+
+/* Button 7 */
+.clrcrt {
+  background-color: rgb(99, 99, 99);
+  color: #ffffff;
+  padding: 10px 40px;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin: 10px 0px;
+  cursor: pointer;
+  border-radius: 2%;
+}
+
+/* Button 8 */
+.loginbtnnav {
+  background-color: #0092fb;
+  color: #ffffff;
+  font-weight: 500;
+  text-transform: uppercase;
+  border-radius: 2%;
+  cursor: pointer;
+  padding: 6px 25px;
+  margin: 5px auto;
+  display: block;
+}
+
+
+/* Button 9 */
+.cls-btn {
+  background-color: #ffffff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 30px;
+  line-height: 1;
+  width: 45px;
+  height: 45px;
+  margin: 10px;
+  position: relative;
+  top: -250px;
+  left: 0;
+  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.2));
+  border-radius: 50%;
+}
+
+.cls-btn::before {
+  content: "\00D7";
+  /* Unicode for the multiplication sign (X) */
+  color: #2b2a2a;
+  /* Color of the X */
+}
+
+.cls-btn:hover {
+  background-color: #f0f0f0;
+  /* Slightly darker background on hover */
+}
+
+/* Button 10 */
+.cls-btn1 {
+  background-color: #ffffff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 30px;
+  line-height: 1;
+  width: 45px;
+  height: 45px;
+  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.2));
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  right: -50px;
+  z-index: 10;
+}
+
+.cls-btn1::before {
+  content: "\00D7";
+  /* Unicode for the multiplication sign (X) */
+  color: #2b2a2a;
+  /* Color of the X */
+}
+
+.cls-btn1:hover {
+  background-color: #f0f0f0;
+  /* Slightly darker background on hover */
+}
+
+.skipbtn{
+  position: absolute;
+  bottom: 20px;
+  right: 35px;
+  padding: 5px 20px;
+  color: #0092fb;
+  border: 2px solid #0092fb;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.skipbtn:hover{
+  border: 2px solid #0077d9;
+  color: #0077d9;
+}
+
+/* Button 11 */
+.cls-card-btn {
+  background-color: #ffffff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 30px;
+  line-height: 1;
+  width: 45px;
+  height: 45px;
+  margin: 10px;
+  position: relative;
+  top: -228px;
+  left: 0;
+  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.2));
+  border-radius: 50%;
+}
+
+.cls-card-btn::before {
+  content: "\00D7";
+  /* Unicode for the multiplication sign (X) */
+  color: #2b2a2a;
+  /* Color of the X */
+}
+
+.cls-card-btn:hover {
+  background-color: #f0f0f0;
+  /* Slightly darker background on hover */
+}
+
+
+@media (max-width: 768px) {
+  .cenhov3 {
+    width: max-content;
+    padding: 10px 15px;
+    margin: 15px 0px;
+  }
+
+  .cenhov4 {
+    width: max-content;
+    padding: 10px 15px;
+    margin: 15px 0px;
+  }
+  .cls-btn1 {
+    padding: 5px 10px;
+    font-size: 30px;
+    line-height: 1;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    right: 8px;
+    z-index: 10;
+  }
+  .skipbtn{
+    position: absolute;
+    bottom: 15px;
+    right: 70px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .cls-card-btn {
+    padding: 5px 10px;
+    font-size: 30px;
+    line-height: 1;
+    width: 45px;
+    height: 45px;
+    margin: 10px;
+    position: relative;
+    top: -290px;
+    left: 0;
+
+  }
+}
+
+@media (max-width: 1030px) {
+  .cenhov3 {
+    width: max-content;
+    padding: 10px 15px;
+    margin: 15px 0px;
+  }
+
+  .cenhov4 {
+    width: max-content;
+    padding: 10px 15px;
+    margin: 15px 0px;
+  }
+}
