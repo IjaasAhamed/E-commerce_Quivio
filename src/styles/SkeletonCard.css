@@ -1,4 +1,3 @@
-/* From Uiverse.io by vk-uiux */ 
 .skeleton__card {
     width: 18rem;
     padding: 1rem;
@@ -33,5 +32,12 @@
   @keyframes shimmer {
     to {
       background-position: -100% 0;
+    }
+  }
+
+  @media (max-width:768px) {
+    .skeleton__card {
+      width: 12rem;
+      padding: 0.6rem;
     }
   }

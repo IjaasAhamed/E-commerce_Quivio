@@ -168,14 +168,16 @@ export const ProductDetails = () => {
   const handleScrollLeft = () => {
     if (scrollContainerRef.current && productCardRef.current) {
       const cardWidth = productCardRef.current.offsetWidth + 16; // Adjust for margin
-      scrollContainerRef.current.scrollBy({ left: -cardWidth * 4, behavior: "smooth" });
+      const scrollAmount = window.innerWidth < 768 ? -cardWidth : -cardWidth * 4;
+      scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
   };
 
   const handleScrollRight = () => {
     if (scrollContainerRef.current && productCardRef.current) {
       const cardWidth = productCardRef.current.offsetWidth + 16; // Adjust for margin
-      scrollContainerRef.current.scrollBy({ left: cardWidth * 4, behavior: "smooth" });
+      const scrollAmount = window.innerWidth < 768 ? cardWidth : cardWidth * 4;
+      scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
   };
 
@@ -184,7 +186,7 @@ export const ProductDetails = () => {
     if (scrollContainerRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
       setIsAtStart(scrollLeft === 0);
-      setIsAtEnd(scrollLeft + clientWidth === scrollWidth);
+      setIsAtEnd(scrollLeft + clientWidth >= scrollWidth - 1);
     }
   };
 
@@ -350,7 +352,7 @@ export const ProductDetails = () => {
             }
             .mob-py{
             padding-top: 120px;
-            padding-bottom: 50px;
+            padding-bottom: 10px;
             }
             }
             
@@ -358,8 +360,8 @@ export const ProductDetails = () => {
       </style>
       <Navbar />
       <section className=" bg-gray-50 py-25 mob-py">
-        <div className="container w-full mx-auto">
-          <div className="bg-white shadow-lg rounded-md p-8 flex gap-15 mob-noflex animate-fade-in">
+        <div className="md:container w-full mx-auto">
+          <div className="bg-white shadow-lg md:rounded-md p-8 flex gap-15 mob-noflex animate-fade-in">
 
             {/* Left Side - Product Image & Buttons */}
             <div className="w-1/2 flex flex-col items-start p-10 mob-nopad mob-fullwd xl:sticky top-20 self-start">
@@ -372,12 +374,12 @@ export const ProductDetails = () => {
                 />
                 <img src={`${API}/${product.product_color_img}`} alt={product.name} className="w-115 h-auto mx-auto p-10" loading="lazy" />
               </div>
-              <div className="flex gap-4 mt-4 mx-auto">
-                <button onClick={handleAddToCart} className="cenhov3 flex items-center px-4 py-2 bg-blue-600 text-white rounded">
-                  <img src={CartIcon} className="w-5 h-5 mr-2 invert" /> Add to Cart
+              <div className="flex gap-4 w-full sm:w-full md:w-auto lg:w-auto mt-0 md:mt-4 md:mx-auto">
+                <button onClick={handleAddToCart} className="cenhov3 flex items-center justify-center px-4 py-2 bg-blue-600 text-white rounded">
+                  <img src={CartIcon} className="w-4 md:w-5 h-4 md:h-5 mr-2 invert" /> Add to Cart
                 </button>
-                <button onClick={handleBuyNow} className="cenhov4 flex items-center px-4 py-2 bg-yellow-500 text-white rounded">
-                  <img src={BuyNow} className="w-5 h-5 mr-2 invert" /> Buy Now
+                <button onClick={handleBuyNow} className="cenhov4 flex items-center justify-center px-4 py-2 bg-yellow-500 text-white rounded">
+                  <img src={BuyNow} className="w-4 md:w-5 h-4 md:h-5 mr-2 invert" /> Buy Now
                 </button>
               </div>
             </div>
@@ -508,9 +510,9 @@ export const ProductDetails = () => {
         </div>
 
         {/* Similar Products Section */}
-        <div className="container w-full mx-auto mt-10">
+        <div className="md:container w-full mx-auto mt-2 md:mt-10">
           {similarProducts.length > 0 && (
-            <div className="bg-white shadow-lg rounded-md p-8 gap-15">
+            <div className="bg-white shadow-lg md:rounded-md p-8 gap-15">
               <h2 className="text-2xl font-bold mb-4">Similar Products</h2>
               <div className="relative">
                 {/* Scroll Buttons */}
@@ -568,8 +570,8 @@ export const ProductDetails = () => {
         </div>
 
         {/* Reviews */}
-        <div className="container w-full mx-auto mt-10" ref={reviewsSectionRef}>
-          <div className="bg-white shadow-lg rounded-md p-8 gap-15">
+        <div className="md:container w-full mx-auto mt-2 md:mt-10" ref={reviewsSectionRef}>
+          <div className="bg-white shadow-lg md:rounded-md p-8 gap-15">
             {product && generatedReviews.length > 0 && (
               <Reviews reviews={generatedReviews} productName={product.name} />
             )}

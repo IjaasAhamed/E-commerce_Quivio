@@ -296,7 +296,7 @@
   /* Slightly darker background on hover */
 }
 
-.skipbtn{
+.skipbtn {
   position: absolute;
   bottom: 20px;
   right: 35px;
@@ -309,7 +309,7 @@
   transition: all 0.3s ease;
 }
 
-.skipbtn:hover{
+.skipbtn:hover {
   border: 2px solid #0077d9;
   color: #0077d9;
 }
@@ -346,17 +346,6 @@
 
 
 @media (max-width: 768px) {
-  .cenhov3 {
-    width: max-content;
-    padding: 10px 15px;
-    margin: 15px 0px;
-  }
-
-  .cenhov4 {
-    width: max-content;
-    padding: 10px 15px;
-    margin: 15px 0px;
-  }
   .cls-btn1 {
     padding: 5px 10px;
     font-size: 30px;
@@ -369,13 +358,15 @@
     right: 8px;
     z-index: 10;
   }
-  .skipbtn{
+
+  .skipbtn {
     position: absolute;
     bottom: 15px;
     right: 70px;
     cursor: pointer;
     transition: all 0.3s ease;
   }
+
   .cls-card-btn {
     padding: 5px 10px;
     font-size: 30px;
@@ -390,16 +381,18 @@
   }
 }
 
-@media (max-width: 1030px) {
+@media (max-width: 1280px) {
   .cenhov3 {
-    width: max-content;
+    width: 100%;
     padding: 10px 15px;
     margin: 15px 0px;
+    font-size: 16px;
   }
 
   .cenhov4 {
-    width: max-content;
+    width: 100%;
     padding: 10px 15px;
     margin: 15px 0px;
+    font-size: 16px;
   }
 }

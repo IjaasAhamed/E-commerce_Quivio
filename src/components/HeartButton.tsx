@@ -63,7 +63,6 @@ export const HeartButton: React.FC<HeartButtonProps> = ({
       fill={liked ? "red" : "none"}
       className={`heart-icon ${liked ? "liked" : ""}`}
       onClick={handleLike}
-      style={{ cursor: 'pointer', position: 'absolute', top: '10px', right: '10px', zIndex: 5 }}
     >
       <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1 7.8 7.8 7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z" />
     </svg>

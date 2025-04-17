@@ -64,7 +64,7 @@ export const Search = () => {
   }
 
   return (
-    <div className="relative sm:w-full md:w-md lg:w-2xl xl:w-3xl mx-auto transform transition-all duration-300">
+    <div className="relative sm:w-full md:w-md lg:w-2xl xl:w-3xl mx-auto transform transition-all duration-300 z-40">
       {/* Search Bar */}
       <div className=" flex items-center border border-gray-300 bg-white/50 rounded-md px-3 sm:px-5">
         <input
@@ -88,7 +88,7 @@ export const Search = () => {
       {/* Search Results */}
       {results.length > 0 && query.trim() && (
         <div className="absolute top-full left-0 w-full max-h-70 overflow-y-auto mt-4 bg-white shadow-lg rounded-md p-2 z-50">
-          <div onClick={handleSearch} className="text-gray-700 font-semibold p-2 last:border-none flex items-center gap-2 cursor-pointer hover:bg-gray-100 rounded-md ">
+          <div onClick={handleSearch} className="text-gray-700 font-semibold p-2 last:border-none flex items-center gap-2 cursor-pointer hover:bg-gray-100 rounded-md">
           <img src={searchIcon} alt="Search Icon" className="w-4 h-4 m-1 opacity-60 object-fit"></img>
             <span className="font-bold">{query}</span>
           </div>

@@ -27,6 +27,8 @@ export const Navbar = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
+
   const API = import.meta.env.VITE_API_BASE_URL;
 
   const handleCartClick = () => {
@@ -116,12 +118,22 @@ export const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem("userId");
     localStorage.removeItem("userName");
+    localStorage.removeItem("profile_pic");
     setUserName(null);
     setIsDropDownOpen(false);
     setIsLoggedIn(false);
     setIsMobileMenuOpen(false);
     window.location.href = ("/");
   };
+
+useEffect(() => {
+  if (isMobileMenuOpen) {
+    setIsMenuVisible(true);
+  } else {
+    const timeout = setTimeout(() => setIsMenuVisible(false), 300);
+    return () => clearTimeout(timeout);
+  }
+}, [isMobileMenuOpen]);
 
   console.log("log:", loading);
   console.log("err:", error);
@@ -142,6 +154,41 @@ export const Navbar = () => {
 }
 .animate-fade-in {
   animation: fade-in 0.3s ease-out;
+}
+@keyframes slideDown {
+  0% {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-1px);
+  }
+  100% {
+    max-height: 300px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    max-height: 300px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-1px);
+  }
+}
+
+.menu-open {
+  animation: slideDown 0.3s ease-out forwards;
+  overflow: hidden;
+}
+
+.menu-close {
+  animation: slideUp 0.3s ease-in forwards;
+  overflow: hidden;
 }
 
         `}
@@ -212,7 +259,7 @@ export const Navbar = () => {
                     <li onClick={() => navigate("/shipping-address")} className="px-5 py-2 cursor-pointer hover:text-blue-600 transform transition-all duration-300 hover:translate-x-1 hover:bg-gray-50">
                       <span className="flex gap-2 mr-3"><img src={address} className="w-4 h-4 mt-1" />Shipping Address</span>
                     </li>
-                    <li onClick={handleLogout} className="px-5 py-2 cursor-pointer hover:text-blue-600 transform transition-all duration-300 hover:translate-x-1 hover:bg-gray-50">
+                    <li onClick={handleLogout} className="px-5 py-2 cursor-pointer hover:text-red-500 transform transition-all duration-300 hover:translate-x-1 hover:bg-gray-50">
                       <span className="flex gap-2"><img src={logout} className="w-4 h-4 mt-1" />Logout</span>
                     </li>
                   </>
@@ -255,8 +302,8 @@ export const Navbar = () => {
         </div>
 
         {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden mt-2 bg-white shadow-md rounded-md p-4 flex flex-col space-y-4">
+        {isMenuVisible && (
+          <div className={`md:hidden  z-30 mt-2 p-4 flex flex-col space-y-4 transition-all duration-300 ${isMobileMenuOpen ? 'menu-open' : 'menu-close'}`}>
             <button onClick={() => { navigate("/profile"); setIsMobileMenuOpen(false); }} className="flex gap-2 items-center">
               <img src={user} className="w-4 h-4" alt="Profile" /> Profile
             </button>

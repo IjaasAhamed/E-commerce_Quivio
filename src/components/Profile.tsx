@@ -482,7 +482,7 @@ export const Profile = () => {
                   {profilePic && (
                     <button
                       onClick={handleProfilePicUpdate}
-                      className="w-full px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#0092fb] hover:bg-[#0077d9] focus:outline-none cursor-pointer"
+                      className="w-full px-4 py-2 mb-15 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#0092fb] hover:bg-[#0077d9] focus:outline-none cursor-pointer"
                     >
                       Upload Picture
                     </button>

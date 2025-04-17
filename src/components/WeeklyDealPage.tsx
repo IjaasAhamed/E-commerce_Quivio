@@ -171,7 +171,7 @@ export const WeeklyDealPage = () => {
             `}
             </style>
             <Navbar />
-            <section className="p-15 mt-10 bg-gray-50 mob-pad animate-fade-in">
+            <section className="p-15 mt-20 md:mt-10 bg-gray-50 mob-pad animate-fade-in">
                 <div className='hidden md:block'>
                     <div className='flex justify-center w-full my-10'>
                         <div className='w-[55%] bg-[#0092fb]' style={{ clipPath: 'polygon(0 0, calc(100% - 0px) 0, calc(100% - 60px) 100%, 0 100%)' }}>
