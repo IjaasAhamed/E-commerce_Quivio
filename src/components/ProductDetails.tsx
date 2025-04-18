@@ -337,6 +337,13 @@ export const ProductDetails = () => {
   animation: fade-in 0.3s ease-out;
 }
 
+@media (max-width:768px) {
+.mob-no-con{
+padding-left: 0px;
+padding-right: 0px;
+}
+}
+
             @media (max-width:1030px) {
             .mob-noflex{
             display:block;
@@ -360,7 +367,7 @@ export const ProductDetails = () => {
       </style>
       <Navbar />
       <section className=" bg-gray-50 py-25 mob-py">
-        <div className="md:container w-full mx-auto">
+        <div className="container w-full mx-auto mob-no-con">
           <div className="bg-white shadow-lg md:rounded-md p-8 flex gap-15 mob-noflex animate-fade-in">
 
             {/* Left Side - Product Image & Buttons */}
@@ -510,7 +517,7 @@ export const ProductDetails = () => {
         </div>
 
         {/* Similar Products Section */}
-        <div className="md:container w-full mx-auto mt-2 md:mt-10">
+        <div className="container w-full mx-auto mt-2 md:mt-10 mob-no-con">
           {similarProducts.length > 0 && (
             <div className="bg-white shadow-lg md:rounded-md p-8 gap-15">
               <h2 className="text-2xl font-bold mb-4">Similar Products</h2>
@@ -570,7 +577,7 @@ export const ProductDetails = () => {
         </div>
 
         {/* Reviews */}
-        <div className="md:container w-full mx-auto mt-2 md:mt-10" ref={reviewsSectionRef}>
+        <div className="container w-full mx-auto mt-2 md:mt-10 mob-no-con" ref={reviewsSectionRef}>
           <div className="bg-white shadow-lg md:rounded-md p-8 gap-15">
             {product && generatedReviews.length > 0 && (
               <Reviews reviews={generatedReviews} productName={product.name} />
