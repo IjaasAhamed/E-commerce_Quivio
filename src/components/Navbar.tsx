@@ -221,7 +221,7 @@ useEffect(() => {
                         : profileIcon
                     }
                     alt="Profile"
-                    className="w-6 h-6 rounded-[50%]"
+                    className="w-6 h-6 rounded-[50%] object-cover"
                   />
                   <div
                     className="absolute -top-1 -left-1 w-8 h-8 rounded-full border-1 border-gray-400 pointer-events-none"

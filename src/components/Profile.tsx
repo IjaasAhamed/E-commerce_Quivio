@@ -51,28 +51,28 @@ export const Profile = () => {
   const [isCountryFocused, setIsCountryFocused] = useState(false);
 
   useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const userId = localStorage.getItem('userId');
-        if (!userId) {
-          setError('User not logged in.');
-          setLoading(false);
-          navigate("/login");
-          return;
-        }
-
-        const response = await axios.get<UserProfile>(`${API}/users/${userId}`);
-        setProfile(response.data);
-      } catch (err: any) {
-        setError(err.message || 'Failed to fetch profile.');
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchProfile();
     console.log("pro:", profile);
   }, []);
+
+  const fetchProfile = async () => {
+    try {
+      const userId = localStorage.getItem('userId');
+      if (!userId) {
+        setError('User not logged in.');
+        setLoading(false);
+        navigate("/login");
+        return;
+      }
+
+      const response = await axios.get<UserProfile>(`${API}/users/${userId}`);
+      setProfile(response.data);
+    } catch (err: any) {
+      setError(err.message || 'Failed to fetch profile.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleEditProfileBtn = () => {
     setShowProfileEditModal(true);
@@ -178,6 +178,7 @@ export const Profile = () => {
   const handleCloseButton = () => {
     setShowProfileEditModal(false);
     setIsProfilePicUpdateWindow(false);
+    window.location.reload();
   };
 
   if (loading) {

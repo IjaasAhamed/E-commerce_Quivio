@@ -512,10 +512,10 @@ app.get('/users-email/:userId', (req, res) => {
 // Updating user profile.
 app.put('/users/:userId', (req, res) => {
   const userId = req.params.userId;
-  const { name, email, mobile_number, street, city, state, zip, country, profile_pic } = req.body;
-  const sql = 'UPDATE users SET name = ?, email = ?, mobile_number = ?, street = ?, city = ?, state = ?, zip = ?, country = ?, profile_pic = ? WHERE id = ?';
+  const { name, email, mobile_number, street, city, state, zip, country } = req.body;
+  const sql = 'UPDATE users SET name = ?, email = ?, mobile_number = ?, street = ?, city = ?, state = ?, zip = ?, country = ? WHERE id = ?';
 
-  db.query(sql, [name, email, mobile_number, street, city, state, zip, country, profile_pic, userId], (err, result) => {
+  db.query(sql, [name, email, mobile_number, street, city, state, zip, country, userId], (err, result) => {
     if (err) {
       return res.status(500).json({ message: 'Database error', error: err });
     }
@@ -531,11 +531,14 @@ app.put('/users/:userId', (req, res) => {
 //updating User Profile Picture
 app.put('/users/:userId/profile_pic', upload.single('profile_pic'), (req, res) => {
   const userId = req.params.userId;
+
   if (!req.file) {
     return res.status(400).json({ message: 'No file uploaded.' });
   }
 
+  const profilePicPath = `/uploads/${req.file.filename}`;
   const sql = 'UPDATE users SET profile_pic = ? WHERE id = ?';
+
   db.query(sql, [req.file.filename, userId], (err, result) => {
     if (err) {
       return res.status(500).json({ message: 'Database error', error: err });
@@ -545,7 +548,10 @@ app.put('/users/:userId/profile_pic', upload.single('profile_pic'), (req, res) =
       return res.status(404).json({ message: 'User not found' });
     }
 
-    res.json({ message: 'Profile picture updated successfully' });
+    res.json({
+      message: 'Profile picture updated successfully',
+      profile_pic: profilePicPath
+    });
   });
 });
 

@@ -37,7 +37,15 @@
 
   @media (max-width:768px) {
     .skeleton__card {
-      width: 12rem;
+      width: 10.5rem;
+      height: auto;
       padding: 0.6rem;
+    }
+    .skeleton__card__title {
+      height: 30px;
+      margin-top: 15px;
+    }
+    .skeleton__card__description {
+      height: 150px;
     }
   }
