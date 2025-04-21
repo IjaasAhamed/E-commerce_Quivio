@@ -25,7 +25,7 @@ export const DeliveryDateGenerator: React.FC = () => {
 
   return (
     <div>
-      <p>Expected Delivery by {deliveryDate}</p>
+      <p className='text-black'>Delivery by {deliveryDate}</p>
     </div>
   );
 };

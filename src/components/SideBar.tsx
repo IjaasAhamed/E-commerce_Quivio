@@ -316,7 +316,7 @@ export const SideBar = ({ onBrandFilterChange, onRatingFilterChange, onPriceFilt
             >
               Price Range {isPriceRangeExpanded ? "▲" : "▼"}
             </button>
-            <div className={`absolute top-full left-0 mt-2 bg-gray-50 rounded-lg px-4 py-2 z-10 w-40 filter-section-content-mobile ${!isPriceRangeExpanded ? 'collapsed' : ''}`}>
+            <div className={`absolute top-full left-0 mt-2 bg-gray-50 rounded-lg shadow-2xl px-4 py-2 z-10 w-40 filter-section-content-mobile ${!isPriceRangeExpanded ? 'collapsed' : ''}`}>
               {priceRanges.map((price) => (
                 <label key={price} className="flex items-center gap-2 py-1">
                   <input
@@ -339,7 +339,7 @@ export const SideBar = ({ onBrandFilterChange, onRatingFilterChange, onPriceFilt
             >
               Brands {isBrandsExpanded ? "▲" : "▼"}
             </button>
-            <div className={`absolute top-full left-0 mt-2 bg-gray-50 rounded-lg px-4 py-2 z-10 w-40 max-h-48 overflow-auto filter-section-content-mobile ${!isBrandsExpanded ? 'collapsed' : ''}`}>
+            <div className={`absolute top-full left-0 mt-2 bg-gray-50 rounded-lg shadow-2xl px-4 py-2 z-10 w-45 max-h-48 overflow-auto filter-section-content-mobile ${!isBrandsExpanded ? 'collapsed' : ''}`}>
               {[...new Set(filters.map((filter) => filter.brand))].map((brand, index) => (
                 <label key={`${brand}-${index}`} className="flex items-center gap-2 py-1">
                   <input
@@ -362,7 +362,7 @@ export const SideBar = ({ onBrandFilterChange, onRatingFilterChange, onPriceFilt
             >
               Ratings {isRatingsExpanded ? "▲" : "▼"}
             </button>
-            <div className={`absolute top-full right-0 mt-2 bg-gray-50 rounded-lg px-4 py-2 z-10 w-40 filter-section-content-mobile ${!isRatingsExpanded ? 'collapsed' : ''}`}>
+            <div className={`absolute top-full right-0 mt-2 bg-gray-50 rounded-lg shadow-2xl px-4 py-2 z-10 w-40 filter-section-content-mobile ${!isRatingsExpanded ? 'collapsed' : ''}`}>
               {[4, 3, 2].map((rating) => (
                 <label key={rating} className="flex items-center gap-2 py-1">
                   <input

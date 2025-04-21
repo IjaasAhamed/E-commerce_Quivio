@@ -315,7 +315,7 @@ export const Checkout = () => {
               </div>
             </div>
           </div>
-          <div className="bg-white w-fit my-5 h-auto border border-gray-300 whitespace-nowrap">
+          <div className="bg-white w-full max-w-xl my-5 h-auto border border-gray-300 whitespace-nowrap">
             <div className="p-4">
               <h2 className="border-b border-b-gray-300 text-xl text-gray-400 uppercase my-4">Price Details</h2>
               <div className="flex justify-between my-2">

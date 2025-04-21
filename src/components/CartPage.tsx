@@ -300,10 +300,10 @@ export const CartPage = () => {
                     <div className="w-full">
                       <p className="font-bold text-2xl">{item.name} {item.color_name}</p>
                       <p className="text-gray-500">{item.category}</p>
-                      <div className="flex gap-2">
+                      <div className="flex space-x-2 flex-wrap">
                         <p className="text-xl font-semibold my-1">${(item.actual_price * item.quantity).toFixed(2)}</p>
-                        <p className="line-through text-gray-400 mt-[6px] text-md">${(item.strike_price * item.quantity).toFixed(2)}</p>
-                        <p className="text-md text-green-600 font-semibold mt-[6px] whitespace-nowrap">
+                        <p className="line-through text-gray-400 my-1 text-md">${(item.strike_price * item.quantity).toFixed(2)}</p>
+                        <p className="text-md text-green-600 font-semibold my-1 whitespace-nowrap">
                           {Math.round(((item.strike_price - item.actual_price) / item.strike_price) * 100)}% Off
                         </p>
                       </div>

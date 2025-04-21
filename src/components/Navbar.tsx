@@ -259,9 +259,11 @@ useEffect(() => {
                     <li onClick={() => navigate("/shipping-address")} className="px-5 py-2 cursor-pointer hover:text-blue-600 transform transition-all duration-300 hover:translate-x-1 hover:bg-gray-50">
                       <span className="flex gap-2 mr-3"><img src={address} className="w-4 h-4 mt-1" />Shipping Address</span>
                     </li>
+                    {userName &&
                     <li onClick={handleLogout} className="px-5 py-2 cursor-pointer hover:text-red-500 transform transition-all duration-300 hover:translate-x-1 hover:bg-gray-50">
                       <span className="flex gap-2"><img src={logout} className="w-4 h-4 mt-1" />Logout</span>
                     </li>
+                    }
                   </>
                 </ul>
               </div>
