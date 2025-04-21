@@ -133,7 +133,7 @@ export const Discount = () => {
                 id: userId,
             };
             console.log("Card data being sent:", cardData);
-            const response = await axios.post("${API}/card-details", cardData);
+            const response = await axios.post(`${API}/card-details`, cardData);
 
             console.log("Payment processed:", response.data);
 
@@ -242,7 +242,7 @@ export const Discount = () => {
                                             onChange={handleCardNumberChange}
                                             required
                                         />
-                                        <label>Card Number (16 digits)</label>
+                                        <label className="whitespace-nowrap">Card Number (16 digits)</label>
                                     </div>
                                     <div className="input-field-cardForm">
                                         <input

@@ -196,6 +196,8 @@ export const Checkout = () => {
         const response = await axios.post(`${API}/orders-cart`, { orders: orderData });
 
         if (response.status === 200) {
+          localStorage.removeItem("cart");
+          setCart([]);
           setShowModal(false);
           setShowModalPaymentStatus(true);
           setOrderProcessed(true);

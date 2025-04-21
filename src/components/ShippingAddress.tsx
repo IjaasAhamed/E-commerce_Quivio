@@ -169,7 +169,7 @@ export const ShippingAddress = () => {
               <div className="relative my-7">
                 <label
                   htmlFor="street"
-                  className={`absolute left-0 px-1 bg-white transition-all cursor-text ${isStreetFocused ? 'text-xs -top-4 text-[#0092fb]' : 'text-base top-2'
+                  className={`absolute left-0 px-1 bg-white transition-all cursor-text ${isStreetFocused || street ? 'text-xs -top-4 text-[#0092fb]' : 'text-base top-2'
                     }`}
                 >
                   Enter Street
@@ -186,7 +186,7 @@ export const ShippingAddress = () => {
               <div className="relative my-7">
                 <label
                   htmlFor="city"
-                  className={`absolute left-0 px-1 bg-white transition-all cursor-text ${isCityFocused ? 'text-xs -top-4 text-[#0092fb]' : 'text-base top-2'
+                  className={`absolute left-0 px-1 bg-white transition-all cursor-text ${isCityFocused ||  city ? 'text-xs -top-4 text-[#0092fb]' : 'text-base top-2'
                     }`}
                 >
                   Enter City
@@ -203,7 +203,7 @@ export const ShippingAddress = () => {
               <div className="relative my-7">
                 <label
                   htmlFor="state"
-                  className={`absolute left-0 px-1 bg-white transition-all cursor-text ${isStateFocused ? 'text-xs -top-4 text-[#0092fb]' : 'text-base top-2'
+                  className={`absolute left-0 px-1 bg-white transition-all cursor-text ${isStateFocused || state ? 'text-xs -top-4 text-[#0092fb]' : 'text-base top-2'
                     }`}
                 >
                   Enter State
@@ -220,7 +220,7 @@ export const ShippingAddress = () => {
               <div className="relative my-7">
                 <label
                   htmlFor="zip"
-                  className={`absolute left-0 px-1 bg-white transition-all cursor-text ${isZipFocused ? 'text-xs -top-4 text-[#0092fb]' : 'text-base top-2'
+                  className={`absolute left-0 px-1 bg-white transition-all cursor-text ${isZipFocused || zip ? 'text-xs -top-4 text-[#0092fb]' : 'text-base top-2'
                     }`}
                 >
                   Enter Zip
@@ -237,7 +237,7 @@ export const ShippingAddress = () => {
               <div className="relative my-7">
                 <label
                   htmlFor="country"
-                  className={`absolute left-0 px-1 bg-white transition-all cursor-text ${isCountryFocused ? 'text-xs -top-4 text-[#0092fb]' : 'text-base top-2'
+                  className={`absolute left-0 px-1 bg-white transition-all cursor-text ${isCountryFocused || country ? 'text-xs -top-4 text-[#0092fb]' : 'text-base top-2'
                     }`}
                 >
                   Enter Country
