@@ -31,37 +31,6 @@ export const Navbar = () => {
 
   const API = import.meta.env.VITE_API_BASE_URL;
 
-  const handleCartClick = () => {
-    navigate("/cart");
-  };
-
-  const toggleDropDown = () => {
-    setIsDropDownOpen((prev) => !prev);
-  };
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen((prev) => !prev);
-  };
-
-  useEffect(() => {
-    const closeDropDown = (event: MouseEvent) => {
-      if (!(event.target as HTMLElement).closest(".account-dropdown")) {
-        setIsDropDownOpen(false);
-      }
-    };
-    document.addEventListener("click", closeDropDown);
-    return () => document.removeEventListener("click", closeDropDown);
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   useEffect(() => {
     const storedUserId = localStorage.getItem("userId");
     const storedName = localStorage.getItem("userName");
@@ -114,6 +83,37 @@ export const Navbar = () => {
 
     fetchProfile();
   }, []);
+  const handleCartClick = () => {
+    navigate("/cart");
+  };
+
+  const toggleDropDown = () => {
+    setIsDropDownOpen((prev) => !prev);
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen((prev) => !prev);
+  };
+
+  useEffect(() => {
+    const closeDropDown = (event: MouseEvent) => {
+      if (!(event.target as HTMLElement).closest(".account-dropdown")) {
+        setIsDropDownOpen(false);
+      }
+    };
+    document.addEventListener("click", closeDropDown);
+    return () => document.removeEventListener("click", closeDropDown);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
 
   const handleLogout = () => {
     localStorage.removeItem("userId");
@@ -222,6 +222,7 @@ useEffect(() => {
                     }
                     alt="Profile"
                     className="w-6 h-6 rounded-[50%] object-cover"
+                    loading="eager"
                   />
                   <div
                     className="absolute -top-1 -left-1 w-8 h-8 rounded-full border-1 border-gray-400 pointer-events-none"

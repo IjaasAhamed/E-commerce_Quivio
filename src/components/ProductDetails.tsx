@@ -458,6 +458,9 @@ padding-right: 0px;
                         onClick={() => {
                           setSelectedImage(`${API}/${variant.product_color_img}`);
                           setProduct(variant); // Update selected product
+                          if(window.innerWidth <= 768) {
+                          window.scrollTo({top: 0, behavior: "smooth"})
+                          }
                         }}
                       />
                       <p className="text-center font-light">{variant.color_name}</p>
@@ -551,7 +554,7 @@ padding-right: 0px;
                       ref={productCardRef}
                       key={item.id}
                       onClick={() => handleProductClick(item.id.toString(), item.name)}
-                      className="inline-block w-70 mx-2 cursor-pointer border border-gray-300 rounded shadow-sm p-4 bg-white hover:shadow-md transition duration-200"
+                      className="inline-block w-70 mx-2 cursor-pointer border border-gray-300 rounded shadow-sm p-4 bg-white hover:shadow-lg hover:border-blue-600 transition duration-200"
                     >
                       <img
                         src={`${API}/${item.product_color_img}`}
