@@ -3,6 +3,8 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import LoginImg from "../assets/login-img.png";
+import EyeOpen from "../assets/eyeopen.png";
+import EyeClose from "../assets/eyeclose.png";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 
@@ -33,6 +35,7 @@ export const LoginSignup = () => {
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
   const [isSignup, setIsSignup] = useState(false);
+  const [showPasswordToggle, setShowPasswordToggle] = useState(false);
   const [loading, setLoading] = useState(false);
   
 
@@ -396,7 +399,7 @@ const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
                 </label>
                 <input
                   id="password"
-                  type="password"
+                  type={showPasswordToggle ? "text" : "password"}
                   value={formData.password}
                   onChange={handleChange}
                   onFocus={() => setIsPasswordFocused(true)}
@@ -404,6 +407,15 @@ const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
                   onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
                   className="w-full p-2 border-b transition-all focus:border-[#0092fb] focus:outline-none"
                 />
+                {formData.password &&(
+                <button
+                onClick={() => setShowPasswordToggle((prev) => !prev)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-blue-500"
+                style={{outline: "none"}}
+                ><img src={showPasswordToggle ? EyeClose : EyeOpen}
+                className="w-5 h-5"/>
+                </button>
+                )}
                 {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password}</p>}
               </div>
             )}
@@ -421,7 +433,7 @@ const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
                 </label>
                 <input
                   id="password"
-                  type="password" // Changed to password type
+                  type={showPasswordToggle ? "text" : "password"}
                   value={formData.password}
                   onChange={handleChange}
                   onFocus={() => setIsPasswordFocused(true)}
@@ -429,6 +441,15 @@ const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
                   onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
                   className="w-full p-2 border-b transition-all focus:border-[#0092fb] focus:outline-none"
                 />
+                {formData.password &&(
+                <button
+                onClick={() => setShowPasswordToggle((prev) => !prev)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-blue-500"
+                style={{outline: "none"}}
+                ><img src={showPasswordToggle ? EyeClose : EyeOpen}
+                className="w-5 h-5"/>
+                </button>
+                )}
                 {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password}</p>}
               </div>
             )}
