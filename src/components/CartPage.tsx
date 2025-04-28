@@ -9,7 +9,7 @@ import { warningToast } from "./WarningToast";
 import EmptyCart from '../assets/empty-cart.png';
 import QVerified from '../assets/Q_verified.png'
 import "../styles/Buttons.css";
-import { CartProvider, useCart } from "../context/cartContext";
+import { useCart } from "../context/cartContext";
 
 
 interface CartItem {
