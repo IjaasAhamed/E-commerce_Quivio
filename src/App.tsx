@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { CartProvider } from './context/cartContext';
 import { Toaster } from 'react-hot-toast';
 import { HomePage } from "./pages/HomePage";
 import { Search } from './components/Search';
@@ -23,33 +24,35 @@ import { ReturnPolicy } from './components/ReturnPolicy';
 function App() {
   const [showModalPaymentStatus, setShowModalPaymentStatus] = useState(false);
   return (
-    <Router>
-      <Toaster position="top-right" />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        {/* <Route path="/category/:name" element={<CategoryPage />} /> */}
-        <Route path='/productCategory/:category' element={<ProductCategory />} />
-        <Route path="/search" element={<Search />}/>
-        <Route path='/product-details/:id/:name' element={<ProductDetails />} />
-        <Route path="/searchResults" element={<SearchResults />} />
-        <Route path='/cart' element={<CartPage />} />
-        <Route path='/login' element={<LoginSignup />} />
-        <Route path='/orders' element={<Orders />} />
-        <Route path='/shipping-address' element={<ShippingAddress />} />
-        <Route path='/profile' element={<Profile />} />
-        <Route path='/privacy-policy' element={<PrivacyPolicy />} />
-        <Route path='/weekly-deal-page' element={<WeeklyDealPage />} />
-        <Route path='/checkout' element={<Checkout />} />
-        <Route path='wishlist' element={<Wishlist />} />
-        <Route path='/terms&conditions' element={<TermsAndConditions />} />
-        <Route path='/contact' element={<Contact />} />
-        <Route path='/return-policy' element={<ReturnPolicy />} />
-      </Routes>
-      <PaymentStatusModal
-        showModalPaymentStatus={showModalPaymentStatus}
-        setShowModalPaymentStatus={setShowModalPaymentStatus}
-      />
-    </Router>
+    <CartProvider>
+      <Router>
+        <Toaster position="top-right" />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          {/* <Route path="/category/:name" element={<CategoryPage />} /> */}
+          <Route path='/productCategory/:category' element={<ProductCategory />} />
+          <Route path="/search" element={<Search />} />
+          <Route path='/product-details/:id/:name' element={<ProductDetails />} />
+          <Route path="/searchResults" element={<SearchResults />} />
+          <Route path='/cart' element={<CartPage />} />
+          <Route path='/login' element={<LoginSignup />} />
+          <Route path='/orders' element={<Orders />} />
+          <Route path='/shipping-address' element={<ShippingAddress />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/privacy-policy' element={<PrivacyPolicy />} />
+          <Route path='/weekly-deal-page' element={<WeeklyDealPage />} />
+          <Route path='/checkout' element={<Checkout />} />
+          <Route path='wishlist' element={<Wishlist />} />
+          <Route path='/terms&conditions' element={<TermsAndConditions />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/return-policy' element={<ReturnPolicy />} />
+        </Routes>
+        <PaymentStatusModal
+          showModalPaymentStatus={showModalPaymentStatus}
+          setShowModalPaymentStatus={setShowModalPaymentStatus}
+        />
+      </Router>
+    </CartProvider>
   );
 }
 

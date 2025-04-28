@@ -10,6 +10,7 @@ import box from "../assets/box.png";
 import address from "../assets/address.png";
 import logout from "../assets/out.png";
 import wishlist from "../assets/wishlist.png";
+import { useCart } from "../context/cartContext";
 
 interface UserProfile {
   profile_pic?: string;
@@ -28,6 +29,9 @@ export const Navbar = () => {
   const [error, setError] = useState<string | null>(null);
 
   const [isMenuVisible, setIsMenuVisible] = useState(false);
+
+  const { cartCount } = useCart();
+  const [isBouncing, setIsBouncing] = useState(false);
 
   const API = import.meta.env.VITE_API_BASE_URL;
 
@@ -114,6 +118,14 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (cartCount > 0) {
+      setIsBouncing(true);
+      const timeout = setTimeout(() => setIsBouncing(false), 400); // match animation duration
+      return () => clearTimeout(timeout);
+    }
+  }, [cartCount]);
+  
 
   const handleLogout = () => {
     localStorage.removeItem("userId");
@@ -126,14 +138,14 @@ export const Navbar = () => {
     window.location.href = ("/");
   };
 
-useEffect(() => {
-  if (isMobileMenuOpen) {
-    setIsMenuVisible(true);
-  } else {
-    const timeout = setTimeout(() => setIsMenuVisible(false), 300);
-    return () => clearTimeout(timeout);
-  }
-}, [isMobileMenuOpen]);
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      setIsMenuVisible(true);
+    } else {
+      const timeout = setTimeout(() => setIsMenuVisible(false), 300);
+      return () => clearTimeout(timeout);
+    }
+  }, [isMobileMenuOpen]);
 
   console.log("log:", loading);
   console.log("err:", error);
@@ -190,6 +202,20 @@ useEffect(() => {
   animation: slideUp 0.3s ease-in forwards;
   overflow: hidden;
 }
+@keyframes bounce {
+  0%, 100% {
+    transform: scale(1);
+    transform-origin: center;
+  }
+  50% {
+    transform: scale(1.3);
+    transform-origin: center;
+  }
+}
+
+.animate-bounce-once {
+  animation: bounce 0.4s ease;
+}
 
         `}
       </style>
@@ -210,7 +236,7 @@ useEffect(() => {
             </div>
             <div className="relative account-dropdown">
               <div
-                className="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-full cursor-pointer"
+                className="flex items-center space-x-2 p-2 hover:bg-gray-100 transition-all duration-300 rounded-full cursor-pointer"
                 onClick={toggleDropDown}
               >
                 <div className="relative inline-block">
@@ -261,16 +287,21 @@ useEffect(() => {
                       <span className="flex gap-2 mr-3"><img src={address} className="w-4 h-4 mt-1" />Shipping Address</span>
                     </li>
                     {userName &&
-                    <li onClick={handleLogout} className="px-5 py-2 cursor-pointer hover:text-red-500 transform transition-all duration-300 hover:translate-x-1 hover:bg-gray-50">
-                      <span className="flex gap-2"><img src={logout} className="w-4 h-4 mt-1" />Logout</span>
-                    </li>
+                      <li onClick={handleLogout} className="px-5 py-2 cursor-pointer hover:text-red-500 transform transition-all duration-300 hover:translate-x-1 hover:bg-gray-50">
+                        <span className="flex gap-2"><img src={logout} className="w-4 h-4 mt-1" />Logout</span>
+                      </li>
                     }
                   </>
                 </ul>
               </div>
             </div>
-            <div onClick={handleCartClick} className="p-2 hover:bg-gray-100 rounded-full cursor-pointer">
+            <div onClick={handleCartClick} className="relative p-2 hover:bg-gray-100 transition-all duration-300 rounded-full cursor-pointer">
               <img src={cartIcon} alt="Cart" className="w-6 h-6" />
+              {cartCount > 0 && (
+                <span className={`absolute -top-0.5 -right-1.5 w-5 h-5 flex justify-center items-center bg-red-500 text-white font-semibold border-[1.5px] border-white rounded-full text-xs ${isBouncing ? 'animate-bounce-once' : ''}`}>
+                  {cartCount}
+                </span>
+              )}
             </div>
           </div>
 
@@ -292,8 +323,13 @@ useEffect(() => {
                   )}
                 </svg>
               </button>
-              <button onClick={() => { handleCartClick(); setIsMobileMenuOpen(false); }} className="flex gap-2 items-center">
+              <button onClick={() => { handleCartClick(); setIsMobileMenuOpen(false); }} className="relative flex gap-2 items-center">
                 <img src={cartIcon} className="w-5 h-5" alt="Cart" />
+                {cartCount > 0 && (
+                <span className={`absolute -top-2 -right-2.5 w-4.5 h-4.5 flex justify-center items-center bg-red-500 text-white font-semibold border-[1.5px] border-white rounded-full text-xs ${isBouncing ? 'animate-bounce-once' : ''}`}>
+                  {cartCount}
+                </span>
+              )}
               </button>
             </div>
           </div>
@@ -326,9 +362,9 @@ useEffect(() => {
             ) : (
               <div className="w-full text-center py-4 border border-gray-300 rounded bg-gray-100">
                 <p className="text-md text-gray-500 whitespace-nowrap py-2 w-full">Already a User?</p>
-              <button onClick={() => { navigate("/login"); setIsMobileMenuOpen(false); }} className="w-[200px] sm:w-sm mx-5 bg-[#0092fb] text-white py-2 rounded">
-                Login
-              </button>
+                <button onClick={() => { navigate("/login"); setIsMobileMenuOpen(false); }} className="w-[200px] sm:w-sm mx-5 bg-[#0092fb] text-white py-2 rounded">
+                  Login
+                </button>
               </div>
             )}
           </div>

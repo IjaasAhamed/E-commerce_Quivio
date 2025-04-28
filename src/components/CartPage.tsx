@@ -9,6 +9,7 @@ import { warningToast } from "./WarningToast";
 import EmptyCart from '../assets/empty-cart.png';
 import QVerified from '../assets/Q_verified.png'
 import "../styles/Buttons.css";
+import { CartProvider, useCart } from "../context/cartContext";
 
 
 interface CartItem {
@@ -31,6 +32,7 @@ export const CartPage = () => {
   const [discount, setDiscount] = useState<number | null>(null);
   const [showAddressModal, setShowAddressModal] = useState(false);
 
+  const { setCartCount } = useCart();
 
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -63,6 +65,7 @@ export const CartPage = () => {
       item.id === id ? { ...item, quantity: item.quantity + 1 } : item
     );
     updateCart(updatedCart);
+    setCartCount(updatedCart.length);
   };
 
   // Decrease quantity (remove item if quantity is 1)
@@ -73,6 +76,7 @@ export const CartPage = () => {
       )
       .filter(item => item.quantity > 0); // Remove items with quantity 0
     updateCart(updatedCart);
+    setCartCount(updatedCart.length);
   };
 
   // Calculate total price of all items in cart BEFORE discount

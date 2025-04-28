@@ -15,6 +15,7 @@ import { HeartButton } from "./HeartButton";
 import { Reviews } from "./Reviews";
 import toast from "react-hot-toast";
 import { warningToast } from "./WarningToast";
+import { useCart } from "../context/cartContext";
 
 interface Product {
   isInWishlist: any;
@@ -71,6 +72,8 @@ export const ProductDetails = () => {
   const userId = localStorage.getItem("userId");
 
   const navigate = useNavigate();
+  const { setCartCount } = useCart();
+
   const handleAddToCart = () => {
     const cartItems = JSON.parse(localStorage.getItem("cart") || "[]");
 
@@ -83,6 +86,7 @@ export const ProductDetails = () => {
     }
 
     localStorage.setItem("cart", JSON.stringify(cartItems)); // Save cart data
+    setCartCount(cartItems.length);
     navigate("/cart"); // Redirect to cart page
   };
 
