@@ -569,10 +569,10 @@ padding-right: 0px;
                       <h3 className="mt-2 font-semibold truncate">{item.name} {item.color_name}</h3>
                       <p className="text-gray-600 text-sm line-clamp-2">{item.description}</p>
                       <div className="flex gap-1">
-                        <p className="text-xl font-bold mt-4">${product.actual_price}</p>
-                        <p className="text-sm text-gray-500 mt-[20px] line-through">${product.strike_price}</p>
+                        <p className="text-xl font-bold mt-4">${item.actual_price}</p>
+                        <p className="text-sm text-gray-500 mt-[20px] line-through">${item.strike_price}</p>
                         <p className="text-sm text-green-600 font-semibold mt-[20px]">
-                          {Math.round(((product.strike_price - product.actual_price) / product.strike_price) * 100)}% Off
+                          {Math.round(((item.strike_price - item.actual_price) / item.strike_price) * 100)}% Off
                         </p>
                       </div>
                     </div>
