@@ -102,13 +102,16 @@ export const CartPage = () => {
     return cart.reduce((total, item) => total + item.quantity, 0);
   };
 
-  const convenienceFee = 1; // Example convenience fee
+  const convenienceFee = 1;
 
   const handlePlaceOrder = async () => {
     const userId = localStorage.getItem("userId");
 
     if (!userId) {
-      window.location.href = "/login";
+      warningToast("Please Login to continue!")
+      setTimeout(() => {
+        window.location.href = "/login";
+      }, 1000);
       return;
     }
 

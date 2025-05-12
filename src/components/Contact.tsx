@@ -1,6 +1,9 @@
 import fb from '../assets/facebook.png'
 import insta from '../assets/instagram.png'
 import LinkedIn from '../assets/linkedin.png'
+import call from '../assets/footer-call.png'
+import mail from '../assets/footer-email.png'
+import location from '../assets/gps.png'
 import { Footer } from './Footer'
 import { Navbar } from './Navbar'
 
@@ -38,7 +41,7 @@ export const Contact = () => {
         <div className="mb-6">
           <h2 className="text-lg font-semibold text-gray-900 mb-2">Our Location</h2>
           <div className="flex items-center text-gray-700">
-            <span className="mr-2">📍</span>
+            <span className="mr-1"><img src={location} className='w-14 h-auto' alt='Location' /></span>
             <p>
               789 Boulevard, Long Island City, NY 11101, Queens, New York.
               <br />
@@ -61,7 +64,7 @@ export const Contact = () => {
         <div className="mb-6">
           <h2 className="text-lg font-semibold text-gray-900 mb-2">Call Us</h2>
           <div className="flex items-center text-gray-700">
-            <span className="mr-2">📞</span>
+            <span className="mr-2"><img src={call} className='w-6 h-6' alt='call' /></span>
             <p>
               Phone: <a href="tel:+1 (917) 5556-0123" className="text-blue-500">
               +1 (917) 5556-0123
@@ -73,7 +76,7 @@ export const Contact = () => {
         <div className="mb-6">
           <h2 className="text-lg font-semibold text-gray-900 mb-2">Email Us</h2>
           <div className="flex items-center text-gray-700">
-            <span className="mr-2">✉️</span>
+            <span className="mr-2"><img src={mail} className='w-6 h-6' alt='mail' /></span>
             <p>
               Email: <a href="mailto:info@quivio.com" className="text-blue-500">
                 info@quivio.com

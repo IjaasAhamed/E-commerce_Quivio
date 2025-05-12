@@ -2,6 +2,8 @@ import Logo from '../assets/Quivio Logo.png'
 import fb from '../assets/facebook.png'
 import insta from '../assets/instagram.png'
 import LinkedIn from '../assets/linkedin.png'
+import call from '../assets/footer-call.png'
+import mail from '../assets/footer-email.png'
 import '../styles/Footer.css'
 
 export const Footer = () => {
@@ -94,8 +96,8 @@ export const Footer = () => {
         <address className="not-italic">
           <h2 className="text-xl font-bold tracking-wide mb-4">Contact & Address</h2>
           <p className="text-gray-400">789 Boulevard, Long Island City, NY 11101, Queens, New York.</p>
-          <p className="text-gray-400 mt-2">📞 Phone: <a href="tel:+1 (917) 5556-0123" className="hover:text-blue-600">+1 (917) 5556-0123</a></p>
-          <p className="text-gray-400">📧 Email: <a href="mailto:info@quivio.com" className="hover:text-blue-600">info@quivio.com</a></p>
+          <p className="text-gray-400 mt-2 flex"><span><img src={call} className='w-6 h-6 mr-1' alt='call' /></span> Phone: <a href="tel:+1 (917) 5556-0123" className="hover:text-blue-600">+1 (917) 5556-0123</a></p>
+          <p className="text-gray-400 mt-1 flex"><span><img src={mail} className='w-6 h-6 mr-1' alt='mail' /></span> Email: <a href="mailto:info@quivio.com" className="hover:text-blue-600">info@quivio.com</a></p>
         </address>
 
       </section>
