@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import searchIcon from "../assets/icon search.png"
@@ -63,8 +63,27 @@ export const Search = () => {
     }
   }
 
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setResults([]);
+      }
+    };
+  
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+  
+
   return (
-    <div className="relative sm:w-full md:w-md lg:w-2xl xl:w-3xl mx-auto transform transition-all duration-300 z-40">
+    <div ref={dropdownRef} className="relative sm:w-full md:w-md lg:w-2xl xl:w-3xl mx-auto transform transition-all duration-300 z-40">
       {/* Search Bar */}
       <div className=" flex items-center border border-gray-300 bg-white/50 rounded-md px-3 sm:px-5">
         <input
