@@ -65,6 +65,7 @@ export const ProductDetails = () => {
   const [showZoom, setShowZoom] = useState(false);
   const [backgroundPosition, setBackgroundPosition] = useState("0% 0%");
   const zoomRef = useRef<HTMLDivElement>(null);
+  const [lensPosition, setLensPosition] = useState({ x: 0, y: 0 });
 
   const [isAtStart, setIsAtStart] = useState(true);
   const [isAtEnd, setIsAtEnd] = useState(false);
@@ -317,12 +318,25 @@ export const ProductDetails = () => {
   };
 
   // Product Image Magnify
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
-    const x = ((e.pageX - left - window.scrollX) / width) * 100;
-    const y = ((e.pageY - top - window.scrollY) / height) * 100;
-    setBackgroundPosition(`${x}% ${y}%`);
-  };
+const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  if (window.innerWidth < 768) return;
+
+  const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+  const xPercent = ((e.pageX - left - window.scrollX) / width) * 100;
+  const yPercent = ((e.pageY - top - window.scrollY) / height) * 100;
+
+  setBackgroundPosition(`${xPercent}% ${yPercent}%`);
+
+  const lensSize = 100;
+  let lensX = e.pageX - left - window.scrollX;
+  let lensY = e.pageY - top - window.scrollY;
+
+  // Clamp lensX and lensY to stay inside image
+  lensX = Math.max(lensSize / 2, Math.min(width - lensSize / 2, lensX));
+  lensY = Math.max(lensSize / 2, Math.min(height - lensSize / 2, lensY));
+
+  setLensPosition({ x: lensX, y: lensY });
+};
 
   return (
     <>
@@ -389,8 +403,13 @@ padding-right: 0px;
             {/* Left Side - Product Image & Buttons */}
             <div className="w-1/2 flex flex-col items-start p-10 mob-nopad mob-fullwd xl:sticky top-20 self-start">
               <div className="rounded-md border border-gray-300 mx-auto relative"
-                onMouseEnter={() => setShowZoom(true)}
-                onMouseLeave={() => setShowZoom(false)}
+                onMouseEnter={() => {
+                  if (window.innerWidth >= 768) setShowZoom(true);
+                }}
+                onMouseLeave={() => {
+                  if (window.innerWidth >= 768) setShowZoom(false);
+                }}
+
                 onMouseMove={handleMouseMove}>
                 <HeartButton
                   userId={userId}
@@ -399,10 +418,22 @@ padding-right: 0px;
                   onRemoveFromWishlist={handleRemoveFromWishlist}
                 />
                 <img src={`${API}/${product.product_color_img}`} alt={product.name} className="w-115 h-auto mx-auto p-10 cursor-zoom-in" loading="lazy" />
-                {showZoom && (
+                {showZoom && window.innerWidth >= 768 && (
+                  <div
+                    className="absolute pointer-events-none border-2 border-blue-500 bg-white/40 rounded"
+                    style={{
+                      width: '100px',
+                      height: '100px',
+                      top: `${lensPosition.y - 50}px`,
+                      left: `${lensPosition.x - 50}px`,
+                    }}
+                  />
+                )}
+
+                {showZoom && window.innerWidth >= 768 && (
                   <div
                     ref={zoomRef}
-                    className="absolute left-full top-0 w-full h-full border border-gray-400 bg-no-repeat bg-white shadow-xl z-50 ml-4"
+                    className="absolute left-full top-0 w-full h-full border border-gray-400 bg-no-repeat bg-white shadow-xl z-50 ml-4 rounded"
                     style={{
                       backgroundImage: `url(${API}/${product.product_color_img})`,
                       backgroundSize: "200%",
