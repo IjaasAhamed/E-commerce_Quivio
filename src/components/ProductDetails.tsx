@@ -62,6 +62,10 @@ export const ProductDetails = () => {
   const [wishlistItems, setWishlistItems] = useState<number[]>([]);
   const [showAddressModal, setShowAddressModal] = useState(false);
   const [generatedReviews, setGeneratedReviews] = useState<Review[]>([]);
+  const [showZoom, setShowZoom] = useState(false);
+  const [backgroundPosition, setBackgroundPosition] = useState("0% 0%");
+  const zoomRef = useRef<HTMLDivElement>(null);
+
   const [isAtStart, setIsAtStart] = useState(true);
   const [isAtEnd, setIsAtEnd] = useState(false);
 
@@ -312,6 +316,14 @@ export const ProductDetails = () => {
     setWishlistItems(prevItems => prevItems.filter(id => id !== productId));
   };
 
+  // Product Image Magnify
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    const x = ((e.pageX - left - window.scrollX) / width) * 100;
+    const y = ((e.pageY - top - window.scrollY) / height) * 100;
+    setBackgroundPosition(`${x}% ${y}%`);
+  };
+
   return (
     <>
       <style>
@@ -376,14 +388,28 @@ padding-right: 0px;
 
             {/* Left Side - Product Image & Buttons */}
             <div className="w-1/2 flex flex-col items-start p-10 mob-nopad mob-fullwd xl:sticky top-20 self-start">
-              <div className="rounded-md border border-gray-300 mx-auto relative">
+              <div className="rounded-md border border-gray-300 mx-auto relative"
+                onMouseEnter={() => setShowZoom(true)}
+                onMouseLeave={() => setShowZoom(false)}
+                onMouseMove={handleMouseMove}>
                 <HeartButton
                   userId={userId}
                   productEntryId={product.id}
                   initialLiked={wishlistItems.includes(product.id)}
                   onRemoveFromWishlist={handleRemoveFromWishlist}
                 />
-                <img src={`${API}/${product.product_color_img}`} alt={product.name} className="w-115 h-auto mx-auto p-10" loading="lazy" />
+                <img src={`${API}/${product.product_color_img}`} alt={product.name} className="w-115 h-auto mx-auto p-10 cursor-zoom-in" loading="lazy" />
+                {showZoom && (
+                  <div
+                    ref={zoomRef}
+                    className="absolute left-full top-0 w-full h-full border border-gray-400 bg-no-repeat bg-white shadow-xl z-50 ml-4"
+                    style={{
+                      backgroundImage: `url(${API}/${product.product_color_img})`,
+                      backgroundSize: "200%",
+                      backgroundPosition: backgroundPosition,
+                    }}
+                  />
+                )}
               </div>
               <div className="flex gap-4 w-full sm:w-full md:w-auto lg:w-auto mt-0 md:mt-4 md:mx-auto">
                 <button onClick={handleAddToCart} className="cenhov3 flex items-center justify-center px-4 py-2 bg-blue-600 text-white rounded">
@@ -462,8 +488,8 @@ padding-right: 0px;
                         onClick={() => {
                           setSelectedImage(`${API}/${variant.product_color_img}`);
                           setProduct(variant); // Update selected product
-                          if(window.innerWidth <= 768) {
-                          window.scrollTo({top: 0, behavior: "smooth"})
+                          if (window.innerWidth <= 768) {
+                            window.scrollTo({ top: 0, behavior: "smooth" })
                           }
                         }}
                       />
