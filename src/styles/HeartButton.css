@@ -1,42 +1,44 @@
 .heart-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  z-index: 5px;
+  fill: rgba(195, 195, 195, 0.848);
+  background-color: rgba(224, 224, 224, 0.342);
+  border-radius: 50%;
+  padding: 4px;
+  transition: transform 0.3s ease, fill 0.3s ease;
+}
+
+/* On hover, slightly enlarge the heart */
+.heart-icon:hover {
+  transform: scale(1.2);
+}
+
+/* Jump effect and fill red when liked */
+.heart-icon.liked {
+  transform: scale(1.1);
+  /* Jump effect */
+  fill: red;
+  /* Red fill when liked */
+}
+
+@media (max-width:768px) {
+  .heart-icon {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 33px;
-    height: 33px;
+    top: -3px;
+    right: -3px;
+    width: 25px;
+    height: 25px;
     cursor: pointer;
     z-index: 5px;
-    fill: rgb(195, 195, 195);
-    /* background-color: rgba(224, 224, 224, 0.655);
-    border-radius: 50%; */
-    padding: 8px;
+    fill: rgba(195, 195, 195, 0.848);
+    background-color: rgba(224, 224, 224, 0.342);
+    border-radius: 50%;
+    padding: 4px;
     transition: transform 0.3s ease, fill 0.3s ease;
   }
-  
-  /* On hover, slightly enlarge the heart */
-  .heart-icon:hover {
-    transform: scale(1.2);
-  }
-  
-  /* Jump effect and fill red when liked */
-  .heart-icon.liked {
-    transform: scale(1.1); /* Jump effect */
-    fill: red; /* Red fill when liked */
-  }
-  
-  @media (max-width:768px) {
-    .heart-icon {
-      position: absolute;
-      top: -3px;
-      right: -3px;
-      width: 33px;
-      height: 33px;
-      cursor: pointer;
-      z-index: 5px;
-      fill: rgb(195, 195, 195);
-      /* background-color: rgba(224, 224, 224, 0.655);
-      border-radius: 50%; */
-      padding: 8px;
-      transition: transform 0.3s ease, fill 0.3s ease;
-    }
-  }
+}
