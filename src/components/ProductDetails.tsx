@@ -318,25 +318,25 @@ export const ProductDetails = () => {
   };
 
   // Product Image Magnify
-const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-  if (window.innerWidth < 768) return;
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (window.innerWidth < 768) return;
 
-  const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
-  const xPercent = ((e.pageX - left - window.scrollX) / width) * 100;
-  const yPercent = ((e.pageY - top - window.scrollY) / height) * 100;
+    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    const xPercent = ((e.pageX - left - window.scrollX) / width) * 100;
+    const yPercent = ((e.pageY - top - window.scrollY) / height) * 100;
 
-  setBackgroundPosition(`${xPercent}% ${yPercent}%`);
+    setBackgroundPosition(`${xPercent}% ${yPercent}%`);
 
-  const lensSize = 100;
-  let lensX = e.pageX - left - window.scrollX;
-  let lensY = e.pageY - top - window.scrollY;
+    const lensSize = 100;
+    let lensX = e.pageX - left - window.scrollX;
+    let lensY = e.pageY - top - window.scrollY;
 
-  // Clamp lensX and lensY to stay inside image
-  lensX = Math.max(lensSize / 2, Math.min(width - lensSize / 2, lensX));
-  lensY = Math.max(lensSize / 2, Math.min(height - lensSize / 2, lensY));
+    // Clamp lensX and lensY to stay inside image
+    lensX = Math.max(lensSize / 2, Math.min(width - lensSize / 2, lensX));
+    lensY = Math.max(lensSize / 2, Math.min(height - lensSize / 2, lensY));
 
-  setLensPosition({ x: lensX, y: lensY });
-};
+    setLensPosition({ x: lensX, y: lensY });
+  };
 
   return (
     <>
@@ -371,6 +371,14 @@ const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
 .mob-no-con{
 padding-left: 0px;
 padding-right: 0px;
+}
+}
+
+@media (max-width:768px) {
+.heart-icon-mob{
+position: absolute;
+top: 5px;
+right: 5px;
 }
 }
 
@@ -416,6 +424,7 @@ padding-right: 0px;
                   productEntryId={product.id}
                   initialLiked={wishlistItems.includes(product.id)}
                   onRemoveFromWishlist={handleRemoveFromWishlist}
+                  className="heart-icon-mob"
                 />
                 <img src={`${API}/${product.product_color_img}`} alt={product.name} className="w-115 h-auto mx-auto p-10 cursor-zoom-in" loading="lazy" />
                 {showZoom && window.innerWidth >= 768 && (

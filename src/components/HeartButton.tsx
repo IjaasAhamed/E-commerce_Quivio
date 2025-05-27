@@ -8,6 +8,7 @@ interface HeartButtonProps {
   productEntryId: number;
   initialLiked: boolean;
   onRemoveFromWishlist?: (productId: number) => void;
+  className?: string;
 }
 
 export const HeartButton: React.FC<HeartButtonProps> = ({
@@ -15,6 +16,7 @@ export const HeartButton: React.FC<HeartButtonProps> = ({
   productEntryId,
   initialLiked,
   onRemoveFromWishlist,
+  className = "",
 }) => {
   const [liked, setLiked] = useState(false); // Initialize liked to false
 
@@ -61,7 +63,7 @@ export const HeartButton: React.FC<HeartButtonProps> = ({
     <svg
       viewBox="0 0 24 24"
       fill={liked ? "red" : "none"}
-      className={`heart-icon ${liked ? "liked" : ""}`}
+      className={`heart-icon ${liked ? "liked" : ""} ${className}`}
       onClick={handleLike}
     >
       <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1 7.8 7.8 7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z" />
