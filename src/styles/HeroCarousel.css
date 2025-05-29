@@ -141,6 +141,7 @@
     align-items: center;
     color: #ffffff;
     padding-top: 80px;
+    backdrop-filter: blur(0.5px);
   }
 
   .img-container {
