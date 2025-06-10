@@ -7,8 +7,11 @@ import mail from '../assets/footer-email.png'
 import '../styles/Footer.css'
 
 export const Footer = () => {
+
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-white text-black py-20 transform transition-all duration-300">
+    <footer className="bg-white text-black pt-20 pb-10 transform transition-all duration-300">
       <section className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
 
         {/* Logo & Description */}
@@ -101,6 +104,9 @@ export const Footer = () => {
         </address>
 
       </section>
+      <div className="container mx-auto px-6 text-center text-gray-400 text-sm mt-10 border-t border-gray-200 pt-8">
+        &copy; {currentYear} Ijaas Ahamed | Quivio. All rights reserved.
+      </div>
     </footer>
   );
 };
